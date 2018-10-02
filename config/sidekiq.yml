@@ -1,0 +1,7 @@
+:schedule:
+  story_addition_worker:
+    cron: '*/10 * * * *' # every 10 mins
+    class: StoryAdditionWorker
+    queue: devnews_main_queue
+:queues:
+  - devnews_main_queue

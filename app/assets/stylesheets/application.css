@@ -1,0 +1,208 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+/*
+  Bootstrap sass variables
+  https://github.com/twbs/bootstrap-rubygem/blob/master/assets/stylesheets/bootstrap/_variables.scss
+*/
+
+
+body {
+  background-color: #F5F6FA;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+}
+
+.tos-footer-holder {
+  font-size: 12px;
+  position: relative;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.loading-div-holder {
+  text-align: center;
+  font-size: 24px;
+}
+
+.light-green-bg {
+  background-color: rgba(0,255,0,0.1)
+}
+.light-red-bg {
+  background-color: rgba(255,0,0,0.1)
+}
+
+.field_with_errors .form-control {
+  background-color: rgba(255,0,0,0.1);
+}
+
+.field_with_errors .fa-exclamation-circle {
+  color: #FF0000;
+}
+
+.field_with_errors .message {
+  font-weight: bold;
+}
+
+.label_validation_error {
+  display: inline;
+}
+
+.collapsable-header {
+  color: #007bff;
+  cursor: pointer;
+}
+
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+a {
+  text-decoration: none !important;
+  color: #318ef9 !important;
+}
+
+html {
+  background-color: #F5F6FA;
+  font-family: 'Source Sans Pro', sans-serif;
+  overflow-y: scroll;
+  min-height: 100%;
+    display: flex;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-size: 14px;
+  min-width: 1024px;
+}
+
+body {
+  flex: 1;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#App, #App>* {
+  height: 100%;
+}
+
+button, input, select, textarea {
+  font-family: 'Source Sans Pro', sans-serif !important;
+  border: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border:none !important;
+  -webkit-text-fill-color: inherit !important;
+  -webkit-box-shadow: 0 0 0px 1000px #FFFFFF inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.ReactTags__tag{
+  background-color: rgba(25, 50, 245, 0.1);
+  font-size: 12px;
+  color: rgba(49, 49, 49, 0.74);
+  margin-left: 10px;
+  border-radius: 4px;
+  padding: 3px 10px;
+  margin-bottom: 5px;
+}
+
+.ReactTags__selected {
+  display: flex;
+  flex-flow: row wrap;
+  min-height: 45px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(49, 49, 49);
+  font-size: 14px;
+  max-width: 600px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  padding: 6px 9px 6px 4px;
+  border: solid 1px rgb(185, 192, 222);
+}
+
+.ReactTags__tag:first-child {
+  margin-left: 0;
+}
+
+.ReactTags__remove {
+  margin-left: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border-bottom: none;
+}
+
+.ReactTags__tagInputField {
+  margin-left: 5px;
+  margin-top: 3px;
+}
+
+.ReactTags__tagInput {
+  height: 25px;
+}
+
+
+div.ReactTags__suggestions {
+    position: absolute;
+}
+div.ReactTags__suggestions ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    box-shadow: .05em .01em .5em rgba(0,0,0,.2);
+    background: white;
+    width: 200px;
+}
+div.ReactTags__suggestions li {
+    border-bottom: 1px solid #ddd;
+    padding: 5px 10px;
+    margin: 0;
+}
+div.ReactTags__suggestions li mark {
+    text-decoration: underline;
+    background: none;
+    font-weight: 600;
+    padding: 0px;
+}
+div.ReactTags__suggestions ul li.ReactTags__activeSuggestion {
+    background: #b7cfe0;
+    cursor: pointer;
+}
+
+
