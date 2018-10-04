@@ -1,24 +1,11 @@
-# README
+# Dev News!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The idea behind Dev News is that it solves a simple problem: when I want to browse developer news, I have to go to a bunch of websites like Hacker News, different subreddits, follow certain twitter profiles, and sometimes even youtube videos.
 
-Things you may want to cover:
+Dev News should aggregate stories from these sources and present them to the user.
 
-* Ruby version
+It is exclusively focused on news for software developers, and will pull content from sources that have stuff that's interesting to developers.
 
-* System dependencies
+# Contributions welcome!
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project is still in it's early stages, but we'd love contributions and help building it.  Wish it had a feature or somehow worked differently?  Submit a pull request!
