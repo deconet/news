@@ -1,6 +1,8 @@
 # Dev News
 
-The idea behind Dev News is that it solves a simple problem: when I want to browse developer news, I have to go to a bunch of websites like Hacker News, different subreddits, follow certain twitter profiles, and sometimes even youtube videos.
+Dev news is a content aggregator by developers, for developers.
+
+It solves a simple problem: when I want to browse developer news, I have to go to a bunch of websites like Hacker News, different subreddits, follow certain twitter profiles, and sometimes even youtube videos.
 
 Dev News should aggregate stories from these sources and present them to the user.
 
