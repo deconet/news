@@ -22,12 +22,13 @@ module StoryAdditionUtils
     story_data = JSON.parse(res.body)
     s = Story.find_or_create_by(id_at_source: story_data['id'])
     s.update(
+      author: story_data['by'],
       title: story_data['title'],
       url: story_data['url'],
       comment_count: story_data['descendants'],
       score: story_data['score'],
       story_time: Time.at(story_data['time']),
-      story_source_id: story_source_id
+      story_source_id: story_source.id
     )
   end
 
@@ -45,16 +46,24 @@ module StoryAdditionUtils
     res = RestClient.get(url)
     data = JSON.parse(res.body)
     data['data']['children'].each do |story|
-      puts "adding reddit story #{story_id}"
-      begin
-        add_story_from_reddit(story, category.id, story_source_id)
-      rescue RestClient::Exceptions::Timeout => e
-        puts "timeout exception trying to get #{story_id}.  skipping."
-      end
+      puts "adding reddit story #{story['id']}"
+      next if story['stickied'] # skip stickied stuff
+      add_story_from_reddit(story, category.id, story_source.id)
     end
   end
 
-  def add_story_from_reddit(category_id, story_source_id)
-
+  def add_story_from_reddit(story, category_id, story_source_id)
+    story_data = story['data']
+    s = Story.find_or_create_by(id_at_source: story_data['id'])
+    s.update(
+      author: story_data['author'],
+      title: story_data['title'],
+      url: story_data['url'],
+      comment_count: story_data['num_comments'],
+      score: story_data['ups'],
+      story_time: Time.at(story_data['created_utc']),
+      story_source_id: story_source_id,
+      story_source_category_id: category_id
+    )
   end
 end
