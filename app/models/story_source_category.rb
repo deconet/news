@@ -1,0 +1,2 @@
+class StorySourceCategory < ApplicationRecord
+end

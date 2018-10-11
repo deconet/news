@@ -31,6 +31,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# to talk to various APIs
+gem 'rest-client'
+
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 
