@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_11_083606) do
+ActiveRecord::Schema.define(version: 2018_10_15_094634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2018_10_11_083606) do
     t.string "homepage_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "comments_url"
+    t.string "display_name"
   end
 
 end

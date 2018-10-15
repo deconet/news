@@ -1,0 +1,1 @@
+export const HOST = '//' + process.env.DECONET_NEWS_HOST + (process.env.DECONET_NEWS_PORT ? ':' + process.env.DECONET_NEWS_PORT : '')
