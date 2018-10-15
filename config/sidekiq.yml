@@ -1,7 +1,11 @@
 :schedule:
-  story_addition_worker:
-    cron: '*/10 * * * *' # every 10 mins
-    class: StoryAdditionWorker
+  reddit_stories_worker:
+    cron: '*/20 * * * *' # every 20 mins
+    class: RedditStoriesWorker
+    queue: devnews_main_queue
+  ycombinator_stories_worker:
+    cron: '*/30 * * * *' # every 30 mins
+    class: YcombinatorStoriesWorker
     queue: devnews_main_queue
 :queues:
   - devnews_main_queue
