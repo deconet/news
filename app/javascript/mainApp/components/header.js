@@ -29,7 +29,7 @@ const Logo = styled(Link)`
 const Menu = styled('div')`
   height: 100%;
   margin-left: 140px;
-  @media (max-width: 4000px) {
+  @media (max-width: 400px) {
     margin-left: 20px;
   }
 `
