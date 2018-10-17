@@ -23,10 +23,17 @@ module YcUtils
     return if story_data['descendants'].nil? # skip stories like blabla is hiring wtih no commetns
     puts "adding yc story #{story_data}"
     s = Story.find_or_create_by(id_at_source: story_data['id'], story_source_id: story_source.id)
+
+    # "ask hn" stories have no url but should be the comments url
+    story_url = if story_data['url'].nil?
+                  s.comments_url
+                else
+                  story_data['url']
+                end
     s.update(
       author: story_data['by'],
       title: story_data['title'],
-      url: story_data['url'],
+      url: story_url,
       comment_count: story_data['descendants'],
       score: story_data['score'],
       story_time: Time.at(story_data['time'])

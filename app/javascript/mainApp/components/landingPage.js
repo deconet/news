@@ -107,9 +107,9 @@ class LandingPage extends React.Component {
       return (
         <StoryCard key={'story_'+s.id}>
           <CardContent>
-            <StorySource color="textSecondary">
+            {/*<StorySource color="textSecondary">
               {s.story_source.name}
-            </StorySource>
+            </StorySource>*/}
             <Typography variant="h5">
               <a href={s.url}>
                 {s.title}
@@ -123,7 +123,7 @@ class LandingPage extends React.Component {
             <Typography component="p">
               {s.comment_count} <a href={s.comments_url}>
                 Comments
-              </a>
+              </a> on {s.story_source.display_name}
               <br />
               By {s.author} at {new Date(s.story_time).toLocaleString()}
             </Typography>
