@@ -5,12 +5,24 @@ import React from 'react';
 import styled, { css } from 'react-emotion'
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
+
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
+
+const generateClassName = createGenerateClassName();
+const jss = create({
+  ...jssPreset(),
+  // We define a custom insertion point that JSS will look for injecting the styles in the DOM.
+  insertionPoint: 'jss-insertion-point',
+});
+
 
 const Root = styled('div')`
   max-width: 1024px;
@@ -64,7 +76,7 @@ class LandingPage extends React.Component {
 
   renderStories () {
     if (this.state.stories === null) {
-      return (<CircularProgress/>)
+      return null;
     }
 
     /* Example of a story
@@ -126,21 +138,23 @@ class LandingPage extends React.Component {
     const { stories, storyPage } = this.state;
 
     return(
-      <Root>
-        <InfiniteScroll
-        dataLength={stories === null ? 0 : stories.length} //This is important field to render the next data
-        next={() => this.getStories(storyPage)}
-        hasMore={true}
-        loader={<CircularProgress style={{marginTop: 40}}/>}
-        endMessage={
-          <p style={{textAlign: 'center'}}>
-            <b>Yay! You have seen it all</b>
-          </p>
-        }
-        >
-          {this.renderStories()}
-        </InfiniteScroll>
-      </Root>
+      <JssProvider jss={jss} generateClassName={generateClassName}>
+        <Root>
+          <InfiniteScroll
+          dataLength={stories === null ? 0 : stories.length} //This is important field to render the next data
+          next={() => this.getStories(storyPage)}
+          hasMore={true}
+          loader={<CircularProgress style={{marginTop: 40}}/>}
+          endMessage={
+            <p style={{textAlign: 'center'}}>
+              <b>Yay! You have seen it all</b>
+            </p>
+          }
+          >
+            {this.renderStories()}
+          </InfiniteScroll>
+        </Root>
+      </JssProvider>
     )
   }
 }
