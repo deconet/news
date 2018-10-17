@@ -11,7 +11,8 @@ class StoriesController < ApplicationController
         .limit(items_per_page)
         .as_json(methods: [
           :story_source,
-          :comments_url
+          :comments_url,
+          :story_source_category
         ])
     }
   end

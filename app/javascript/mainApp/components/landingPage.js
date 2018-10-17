@@ -123,7 +123,9 @@ class LandingPage extends React.Component {
             <Typography component="p">
               {s.comment_count} <a href={s.comments_url}>
                 Comments
-              </a> on {s.story_source.display_name}
+              </a> on {s.story_source.display_name} {
+                s.story_source_category === null ? null : `/r/${s.story_source_category.name}`
+              }
               <br />
               By {s.author} at {new Date(s.story_time).toLocaleString()}
             </Typography>
