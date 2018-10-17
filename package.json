@@ -11,6 +11,7 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-emotion": "^9.2.12",
+    "react-infinite-scroll-component": "^4.2.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "resolve-url-loader": "^3.0.0",
