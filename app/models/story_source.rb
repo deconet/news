@@ -1,6 +1,6 @@
 class StorySource < ApplicationRecord
-  has_many :stories
-  has_many :story_source_categories
+  has_many :stories, dependent: :destroy
+  has_many :story_source_categories, dependent: :destroy
 
   validates :name, uniqueness: true, presence: true
   validates :comments_url, presence: true
