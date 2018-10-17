@@ -47,7 +47,8 @@ class LandingPage extends React.Component {
 
   state = {
     stories: null,
-    storyPage: 0
+    storyPage: 0,
+    hasMore: true
   }
 
   componentWillMount () {
@@ -60,6 +61,13 @@ class LandingPage extends React.Component {
     return apiGet({
       url: HOST+'/v0/stories?page='+page,
       callback: (data) => {
+
+        // out of stuff
+        if (data.stories.length == 0) {
+          this.setState({hasMore: false})
+          return
+        }
+
         this.setState(prevState => {
           return {
             stories: prevState.stories === null ? data.stories : [...prevState.stories, ...data.stories],
@@ -137,7 +145,7 @@ class LandingPage extends React.Component {
 
 
   render () {
-    const { stories, storyPage } = this.state;
+    const { stories, storyPage, hasMore } = this.state;
 
     return(
       <JssProvider jss={jss} generateClassName={generateClassName}>
@@ -145,11 +153,11 @@ class LandingPage extends React.Component {
           <InfiniteScroll
           dataLength={stories === null ? 0 : stories.length} //This is important field to render the next data
           next={() => this.getStories(storyPage)}
-          hasMore={true}
+          hasMore={hasMore}
           loader={<CircularProgress style={{marginTop: 40}}/>}
           endMessage={
             <p style={{textAlign: 'center'}}>
-              <b>Yay! You have seen it all</b>
+              <b>Yay! You have seen all the stories!</b>
             </p>
           }
           >
