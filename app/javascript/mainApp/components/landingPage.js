@@ -3,6 +3,7 @@ import { HOST } from '../../settings'
 
 import React from 'react';
 import styled, { css } from 'react-emotion'
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -33,21 +34,25 @@ const StoryUrl = styled(Typography)`
 class LandingPage extends React.Component {
 
   state = {
-    stories: null
+    stories: null,
+    storyPage: 0
   }
 
   componentWillMount () {
     if (this.state.stories === null) {
-      this.getStories()
+      this.getStories(0)
     }
   }
 
-  getStories () {
+  getStories (page) {
     return apiGet({
-      url: HOST+'/v0/stories',
+      url: HOST+'/v0/stories?page='+page,
       callback: (data) => {
-        this.setState({
-          stories: data.stories
+        this.setState(prevState => {
+          return {
+            stories: prevState.stories === null ? data.stories : [...prevState.stories, ...data.stories],
+            storyPage: page + 1
+          }
         })
       },
       error: (err) => {
@@ -118,9 +123,23 @@ class LandingPage extends React.Component {
 
 
   render () {
+    const { stories, storyPage } = this.state;
+
     return(
       <Root>
-        {this.renderStories()}
+        <InfiniteScroll
+        dataLength={stories === null ? 0 : stories.length} //This is important field to render the next data
+        next={() => this.getStories(storyPage)}
+        hasMore={true}
+        loader={<CircularProgress style={{marginTop: 40}}/>}
+        endMessage={
+          <p style={{textAlign: 'center'}}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
+        >
+          {this.renderStories()}
+        </InfiniteScroll>
       </Root>
     )
   }

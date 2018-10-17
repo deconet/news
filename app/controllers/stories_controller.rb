@@ -1,8 +1,8 @@
 class StoriesController < ApplicationController
   def index
     # 50 items per page
-    items_per_page = 50
-    page_offset = params[:page].nil ? 0 : params[:page] * items_per_page
+    items_per_page = 10
+    page_offset = params[:page].nil? ? 0 : params[:page].to_i * items_per_page
     render json: {
       stories: Story.all
         .includes(:story_source, :story_source_category)
