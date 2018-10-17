@@ -11,7 +11,11 @@ story_sources = [
     name: 'reddit',
     homepage_url: 'https://reddit.com',
     comments_url: 'https://www.reddit.com/r/:category_name/comments/:story_id',
-    display_name: 'Reddit'
+    display_name: 'Reddit',
+    story_source_categories_attributes: [
+      { name: 'programming' }
+    ]
+
   },
   {
     name: 'ycombinator',
