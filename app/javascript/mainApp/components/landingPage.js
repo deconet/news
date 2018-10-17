@@ -26,6 +26,8 @@ const jss = create({
 
 const Root = styled('div')`
   max-width: 1024px;
+  margin-left: 10px;
+  margin-right: 10px;
   text-align: center;
 `
 
@@ -41,6 +43,7 @@ const StorySource = styled(Typography)`
 
 const StoryUrl = styled(Typography)`
   margin-bottom: 12px;
+  overflow-wrap: break-word;
 `
 
 class LandingPage extends React.Component {

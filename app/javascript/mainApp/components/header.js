@@ -18,8 +18,8 @@ const Wrapper = styled('div')`
 const Logo = styled(Link)`
   display: block;
   width: 35px;
-    height: 40px;
-    margin-top: 17px;
+  height: 40px;
+  margin-top: 17px;
   background-image: url(${logoFile});
   background-repeat: no-repeat;
   background-size: cover;
@@ -29,6 +29,9 @@ const Logo = styled(Link)`
 const Menu = styled('div')`
   height: 100%;
   margin-left: 140px;
+  @media (max-width: 4000px) {
+    margin-left: 20px;
+  }
 `
 const MenuInner = styled('div')`
   width: auto;
@@ -38,8 +41,8 @@ const MenuInner = styled('div')`
 `
 const MenuItem = styled('a')`
   font-size: 16px;
-    letter-spacing: 0.5px;
-    height: 100%;
+  letter-spacing: 0.5px;
+  height: 100%;
   display: inline-block;
   margin-left: 40px;
   text-transform: uppercase;
