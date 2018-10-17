@@ -21,9 +21,9 @@ const WithoutFooter = styled('div')`
   flex: 1 0 auto;
 `
 const Inner = styled('div')`
-  width: 1000px;
+  max-width: 1024px;
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 10px;
   padding-bottom: 128px;
 `
 
