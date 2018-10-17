@@ -1,5 +1,5 @@
 class YcombinatorStoriesWorker
-  include StoryAdditionUtils
+  include YcUtils
   include Sidekiq::Worker
 
   def perform(*args)
