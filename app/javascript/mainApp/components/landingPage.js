@@ -33,7 +33,7 @@ const Root = styled('div')`
 
 const StoryCard = styled(Card)`
   min-width: 275px;
-  margin-top: 20px;
+  margin-top: 10px;
 `
 
 const StorySource = styled(Typography)`
@@ -118,6 +118,9 @@ class LandingPage extends React.Component {
       return (
         <StoryCard key={'story_'+s.id}>
           <CardContent>
+            <div style={{float: 'left'}}>
+              {s.score}
+            </div>
             {/*<StorySource color="textSecondary">
               {s.story_source.name}
             </StorySource>*/}

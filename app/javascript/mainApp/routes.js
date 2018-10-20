@@ -23,7 +23,7 @@ const WithoutFooter = styled('div')`
 const Inner = styled('div')`
   max-width: 1024px;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 5px;
   padding-bottom: 128px;
 `
 

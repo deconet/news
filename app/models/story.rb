@@ -15,4 +15,13 @@ class Story < ApplicationRecord
       .gsub(':story_id', id_at_source)
     end
   end
+
+  def as_json(opts = {})
+    # puts '------------------------AS JSON'
+    # puts "opts: #{opts}"
+    # puts '--------------'
+    opts[:methods] = [:story_source, :comments_url, :story_source_category] if opts[:only].nil? && opts[:except].nil? && opts[:methods].nil?
+
+    super(opts)
+  end
 end
