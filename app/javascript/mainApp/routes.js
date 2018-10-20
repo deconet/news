@@ -5,12 +5,21 @@ import {
 } from 'react-router-dom'
 import styled from 'react-emotion'
 
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
+
 import Header from './components/header'
 import Footer from './components/footer'
 
 import LandingPage from './components/landingPage'
 
-
+const generateClassName = createGenerateClassName();
+const jss = create({
+  ...jssPreset(),
+  // We define a custom insertion point that JSS will look for injecting the styles in the DOM.
+  insertionPoint: 'jss-insertion-point',
+});
 
 const Wrapper = styled('div')`
   height: 100%;
@@ -28,15 +37,17 @@ const Inner = styled('div')`
 `
 
 const Root = props => (
-  <Wrapper>
-    <WithoutFooter>
-      <Header {...props}/>
-      <Inner>
-        <LandingPage {...props}/>
-      </Inner>
-    </WithoutFooter>
-    <Footer />
-  </Wrapper>
+  <JssProvider jss={jss} generateClassName={generateClassName}>
+    <Wrapper>
+      <WithoutFooter>
+        <Header {...props}/>
+        <Inner>
+          <LandingPage {...props}/>
+        </Inner>
+      </WithoutFooter>
+      <Footer />
+    </Wrapper>
+  </JssProvider>
 )
 
 const App = (props) => (
