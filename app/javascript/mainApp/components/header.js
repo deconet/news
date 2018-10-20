@@ -2,6 +2,12 @@ import React from 'react'
 import styled from 'react-emotion'
 import { Link,NavLink } from 'react-router-dom'
 
+import MaterialMenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+
+
 import logoFile from '../assets/images/logo-small.png'
 
 const Wrapper = styled('div')`
@@ -67,17 +73,40 @@ const MenuItem = styled('a')`
   }
 `
 
+const SortingBlock = styled('div')`
+  margin-left: auto;
+  cursor: pointer;
+  display: flex;
+  > div {
+    > div {
+      display: flex;
+    }
+  }
+`
+
 class Header extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
+      sorting: 'score'
     }
   }
 
   componentDidMount() {
+    const { match } = this.props;
+    const { params } = match;
+    if (params.sorting) {
+      this.setState({sorting: params.sorting})
+    }
+  }
 
-
+  handleSortChange(event) {
+    const sorting = event.target.value
+    this.setState({
+      sorting
+    })
+    this.props.history.push(`/${sorting}`)
   }
 
   render(){
@@ -101,6 +130,23 @@ class Header extends React.Component {
       <Wrapper>
           <Logo to="/" />
           {menu}
+          <SortingBlock>
+            <FormControl style={{marginTop: 10}}>
+              <InputLabel htmlFor="sorting">Sort</InputLabel>
+              <Select
+                value={this.state.sorting}
+                onChange={this.handleSortChange.bind(this)}
+                inputProps={{
+                  name: 'sorting',
+                  id: 'sorting',
+                }}
+              >
+                <MaterialMenuItem value='score'>Score</MaterialMenuItem>
+                <MaterialMenuItem value='comment_count'>Comments</MaterialMenuItem>
+                <MaterialMenuItem value='story_time'>Time</MaterialMenuItem>
+              </Select>
+            </FormControl>
+          </SortingBlock>
       </Wrapper>
     )
   }

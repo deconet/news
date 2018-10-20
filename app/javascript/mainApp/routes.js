@@ -27,18 +27,22 @@ const Inner = styled('div')`
   padding-bottom: 128px;
 `
 
+const Root = props => (
+  <Wrapper>
+    <WithoutFooter>
+      <Header {...props}/>
+      <Inner>
+        <LandingPage {...props}/>
+      </Inner>
+    </WithoutFooter>
+    <Footer />
+  </Wrapper>
+)
+
 const App = (props) => (
   <Router>
     <div>
-      <Wrapper>
-        <WithoutFooter>
-          <Header />
-          <Inner>
-            <Route exact path='/' component={LandingPage} />
-          </Inner>
-        </WithoutFooter>
-        <Footer />
-      </Wrapper>
+      <Route path='/:sorting?' component={Root} />
     </div>
   </Router>
 )

@@ -51,18 +51,39 @@ class LandingPage extends React.Component {
   state = {
     stories: null,
     storyPage: 0,
-    hasMore: true
+    hasMore: true,
+    sorting: 'score'
   }
 
-  componentWillMount () {
-    if (this.state.stories === null) {
-      this.getStories(0)
+  componentDidMount () {
+    const { match } = this.props;
+    const { params } = match;
+    if (params.sorting) {
+      this.setState({sorting: params.sorting}, () => {
+        if (this.state.stories === null) {
+          this.getStories(0)
+        }
+      })
+    } else {
+      if (this.state.stories === null) {
+        this.getStories(0)
+      }
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { match } = this.props;
+    const { params } = match;
+    if (prevProps.match.params.sorting != params.sorting && params.sorting) {
+      this.setState({sorting: params.sorting, stories: null}, () => {
+        this.getStories(0)
+      })
     }
   }
 
   getStories (page) {
     return apiGet({
-      url: HOST+'/v0/stories?page='+page,
+      url: `${HOST}/v0/stories?page=${page}&sorting=${this.state.sorting}`,
       callback: (data) => {
 
         // out of stuff

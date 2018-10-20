@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   mount Sidekiq::Web, at: "/sidekiq"
 
   root to: "pages#root"
+  get '/score' => 'pages#root'
+  get '/comment_count' => 'pages#root'
+  get '/story_time' => 'pages#root'
 
   # namespace the json endpoints under v0
   scope 'v0' do
