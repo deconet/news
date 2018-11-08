@@ -2,6 +2,8 @@
 
 Dev news is a content aggregator by developers, for developers.
 
+Check it out here: [https://news.deco.network/](https://news.deco.network/)
+
 It solves a simple problem: when I want to browse developer news, I have to go to a bunch of websites like Hacker News, different subreddits, follow certain twitter profiles, and sometimes even youtube videos.
 
 Dev News should aggregate stories from these sources and present them to the user.
