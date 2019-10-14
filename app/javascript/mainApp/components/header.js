@@ -116,11 +116,8 @@ class Header extends React.Component {
     const menu = (
       <Menu>
         <MenuInner>
-          <MenuItem href="https://app.deco.network">
-            <span>Assets Market</span>
-          </MenuItem>
           <MenuItem href="https://github.com/deconet/news">
-            <span>GitHub</span>
+            <span>GitHub Repo</span>
           </MenuItem>
         </MenuInner>
       </Menu>
